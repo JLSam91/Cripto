@@ -57,20 +57,37 @@ def crear_Primo(v = False, ceros = 8):
     if v:
         print("Generando número primo:")
     contador = 0
+    excluidos = (0, 2, 4, 5, 6, 8)
     while True:
         contador += 1
         if v:
             print("{c} número(s) probado(s)".format(c = contador))
         primo=random.randint(10**(ceros-1), 10**ceros)
-        division = 0
-        for i in range (1, primo):
-            if primo % i == 0:
-                division += 1
-        if division == 1:
-            if v:
-                print("Primo encontrado: {p}".format(p= primo))
-            return primo 
-            break
+        print(type(primo))
+        if not int(str(primo)[-1]) in excluidos:
+            division = 0
+            try:
+                mitad = primo/2
+                if not isinstance(mitad, float):
+                    break
+            except:
+                break
+            fibo_1 = 0
+            fibo_2 = 1
+            fibo_temp = fibo_1 + fibo_2
+            while fibo_temp < int(primo/2):
+                if primo % fibo_temp == 0:
+                    division += 1
+                fibo_1 = fibo_2
+                fibo_2 = fibo_temp
+                fibo_temp = fibo_1 + fibo_2
+                if division == 2:
+                    break
+            if division == 1:
+                if v:
+                    print("Primo encontrado: {p}".format(p= primo))
+                return primo 
+                break
 
 if __name__ == "__main__":
     
