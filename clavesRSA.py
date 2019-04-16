@@ -97,7 +97,7 @@ if args.verbosity is not None:
         q = crear_Primo(v = True)
 else:
     if args.tamaño is not None:
-        q = crear_Primo(ceros = (int(args.tamañoñ)))
+        q = crear_Primo(ceros = (int(args.tamaño)))
     else:
         q = crear_Primo() 
 
